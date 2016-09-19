@@ -2,6 +2,21 @@ Intro
 =====
 Lorem ipsum
 
+Goals
+-----
+Lorem ipsum
+
+Schedule
+--------
+
+| Session | Title | Description |
+| --- | --- | --- |
+| Lecture 1 | Setup | Installation, Jupyter notebooks |
+| Lecture 2 | Basic Python | Syntax, data structures, control flow, etc |
+| Exercise 1 | My First Notebook | ... |
+| Lecture 3 | Pandas I | Reading data, dataframe basics |
+
+
 Getting started
 ===============
 In order to make sure everyone is operating off of the same page, we're going
@@ -77,7 +92,9 @@ simply:
     ```
 
 ### Unix/Linux
-Lorem ipsum
+¯\_(ツ)_/¯
+
+
 
 Install Anaconda
 ----------------
@@ -107,5 +124,5 @@ Lorem ipsum
 1. Fire up a notebook:
 
     ```
-    docker run -i -t -p 8888:8888 continuumio/anaconda3 /opt/conda/bin/jupyter notebook --ip='*' --no-browser
+    docker run -i -t -p 8888:8888 -v ~/repos/ihme-python-course/:/home/ihme-python-course/ continuumio/anaconda3 /opt/conda/bin/jupyter notebook --ip='*' --no-browser --notebook-dir=/home/ihme-python-course/
     ```
