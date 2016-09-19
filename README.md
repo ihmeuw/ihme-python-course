@@ -12,6 +12,22 @@ Python development environments.
 Please follow the installation instructions below to make sure you have a 
 working Python environment prior to the beginning of the course.
 
+Clone this repo
+---------------
+First, you're going to want to get a copy of this repository onto your machine.
+Simply fire up `git` and clone it:
+
+1. Open up a shell (e.g. `cmd.exe` or `terminal.app`).
+
+2. Navigate to where you'd like to save this. We recommend `${HOME}/repos/` 
+    (e.g. `C:/Users/${USER}/repos/` on Windows, `/Users/${USER}/repos/` on 
+    Mac, or `/homes/${USER}/repos/` on Unix).
+
+3. Clone this repo:
+  ```
+  git clone ssh://git@stash.ihme.washington.edu:7999/scic/ihme-python-course.git
+  ```
+
 Install Docker
 --------------
 Docker enables you to create "containers" which provide consistent environments
@@ -29,13 +45,15 @@ Detailed installation instructions are available
 simply:
 
 1. [Download](https://download.docker.com/win/stable/InstallDocker.msi) the
-installer.
+    installer.
 
 2. Double click on the installer and follow the prompts (keeping all options 
-as defaults is fine).
+    as defaults is fine).
 
-3. Open a shell (e.g. `cmd.exe`) and trying running the test example
-`docker run hello-world`.
+3. Open a shell (e.g. `cmd.exe`) and trying running the test example:
+    ```
+    docker run hello-world
+    ```
 
 ### Mac OSX
 Detailed installation instructions are available
@@ -45,12 +63,14 @@ simply:
 1. [Download](https://download.docker.com/mac/stable/Docker.dmg) the installer.
 
 2. Double click on the installer and drag `Docker.app` into your Applications
-folder.
+    folder.
 
 3. Double click on `Docker.app` to start Docker.
 
-4. Open a shell (e.g. `terminal.app`) and trying running the test example
-`docker run hello-world`.
+4. Open a shell (e.g. `terminal.app`) and trying running the test example:
+    ```
+    docker run hello-world
+    ```
 
 ### Unix/Linux
 Lorem ipsum
