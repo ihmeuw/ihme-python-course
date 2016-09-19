@@ -9,8 +9,9 @@ to be using [Docker](https://www.docker.com/what-docker) and
 [Anaconda](https://www.continuum.io/anaconda-overview) to setup consistent
 Python development environments.
 
-Please follow the installation instructions below to make sure you have a 
-working Python environment prior to the beginning of the course.
+Please follow the installation instructions for Docker and Anaconda below to
+make sure you have a working Python environment prior to the beginning of the 
+course.
 
 Clone this repo
 ---------------
@@ -24,6 +25,7 @@ Simply fire up `git` and clone it:
     Mac, or `/homes/${USER}/repos/` on Unix).
 
 3. Clone this repo:
+ 
   ```
   git clone ssh://git@stash.ihme.washington.edu:7999/scic/ihme-python-course.git
   ```
@@ -51,6 +53,7 @@ simply:
     as defaults is fine).
 
 3. Open a shell (e.g. `cmd.exe`) and trying running the test example:
+ 
     ```
     docker run hello-world
     ```
@@ -68,6 +71,7 @@ simply:
 3. Double click on `Docker.app` to start Docker.
 
 4. Open a shell (e.g. `terminal.app`) and trying running the test example:
+ 
     ```
     docker run hello-world
     ```
@@ -85,11 +89,23 @@ to ensure that everyone is running under the same environment. See
 Docker and Anaconda fit together.
 
 1. Get the latest Anaconda for Python 3 image:
+
     ```
     docker pull continuumio/anaconda3
     ```
 
-2. Run a Jupyter Notebook Server from inside the Anaconda Docker image:
+2. Test that your installation worked:
+
+    ```
+    docker run continuumio/anaconda3 /opt/conda/bin/conda info
+    ```
+
+Running Jupyter Notebooks
+=========================
+Lorem ipsum
+
+1. Fire up a notebook:
+
     ```
     docker run -i -t -p 8888:8888 continuumio/anaconda3 /opt/conda/bin/jupyter notebook --ip='*' --no-browser
     ```
