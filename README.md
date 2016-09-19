@@ -92,7 +92,7 @@ simply:
     ```
 
 ### Unix/Linux
-¯\_(ツ)_/¯
+¯\\_(ツ)_/¯
 
 
 
@@ -121,8 +121,32 @@ Running Jupyter Notebooks
 =========================
 Lorem ipsum
 
-1. Fire up a notebook:
+1. You can fire up a notebook using the following command:
 
     ```
-    docker run -i -t -p 8888:8888 -v ~/repos/ihme-python-course/:/home/ihme-python-course/ continuumio/anaconda3 /opt/conda/bin/jupyter notebook --ip='*' --no-browser --notebook-dir=/home/ihme-python-course/
+    docker run -it -p 8888:8888 -v ~/repos/ihme-python-course/:/home/ihme-python-course/ continuumio/anaconda3 /opt/conda/bin/jupyter notebook --ip='*' --no-browser --notebook-dir=/home/ihme-python-course/
     ```
+
+    What do all of these arguments mean?
+    
+    | Argument | Value | Description |
+    | --- | --- | --- |
+    | `-it` | | Run the Docker container interactively |
+    | `-p` | `8888:8888` | Map the 8888 port of the Docker container to the local port so that you can connect to it via your web browser |
+    | `-v` | `~/repos/ihme-python-course/:/home/ihme-python-course/` | Maps `<host directory>:<container directory>` so that the repo you've downloaded is visible to the container |
+    | `continuumio/anaconda3` | | The name of the Docker container to be run |
+    | `/opt/conda/bin/jupyter` | | The program to execute inside of the container (Jupyter) |
+    | `notebook` | | This tells Jupyter to start a Notebook server |
+    | `--ip` | `'*'` | Configures Jupyter to respond to any user that can connect to the container |
+    | `--no-browser` | | Prevents Jupyter from trying to automatically launch a web browser, since the Docker container does not have one |
+    | `--notebook-dir` | `/home/ihme-python-course/` | Sets the root directory for the Jupyter server to the same one we mapped under `-v` |
+
+    If you've followed all of the directions above exactly, you shouldn't need 
+    to edit any of these right now. If you've saved into a non-standard
+    location, you may need to change the first part of your `-v` argument.
+
+2. Navigate to [http://localhost:8888](http://localhost:8888) in your web 
+    browser. You should see a listing of the files from this repo.
+
+
+
