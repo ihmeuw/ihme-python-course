@@ -30,8 +30,10 @@ simply:
 
 1. [Download](https://download.docker.com/win/stable/InstallDocker.msi) the
 installer.
+
 2. Double click on the installer and follow the prompts (keeping all options 
 as defaults is fine).
+
 3. Open a shell (e.g. `cmd.exe`) and trying running the test example
 `docker run hello-world`.
 
@@ -41,9 +43,12 @@ Detailed installation instructions are available
 simply:
 
 1. [Download](https://download.docker.com/mac/stable/Docker.dmg) the installer.
+
 2. Double click on the installer and drag `Docker.app` into your Applications
 folder.
+
 3. Double click on `Docker.app` to start Docker.
+
 4. Open a shell (e.g. `terminal.app`) and trying running the test example
 `docker run hello-world`.
 
@@ -52,4 +57,19 @@ Lorem ipsum
 
 Install Anaconda
 ----------------
-Anaconda is...
+Anaconda is a software package for Python (and R and sometimes C...) that
+handles the installation of common Python packages for you, making it easier
+to create and manage portable environments. We'll be using it inside of Docker
+to ensure that everyone is running under the same environment. See 
+[this page](https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science) for more on how
+Docker and Anaconda fit together.
+
+1. Get the latest Anaconda for Python 3 image:
+    ```
+    docker pull continuumio/anaconda3
+    ```
+
+2. Run a Jupyter Notebook Server from inside the Anaconda Docker image:
+    ```
+    docker run -i -t -p 8888:8888 continuumio/anaconda3 /opt/conda/bin/jupyter notebook --ip='*' --no-browser
+    ```
