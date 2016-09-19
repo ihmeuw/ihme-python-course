@@ -162,8 +162,7 @@ Jupyter notebooks are...
             Sets the root directory for the Jupyter server to the same one we 
             mapped under `-v`
     ```
-
-
+    
     If you've followed all of the directions above exactly, you shouldn't need 
     to edit any of these right now. If you've saved into a non-standard
     location, you may need to change the first part of your `-v` argument.
