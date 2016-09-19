@@ -4,7 +4,7 @@ Lorem ipsum
 
 Goals
 -----
-Lorem ipsum
+This course will teach you...
 
 Schedule
 --------
@@ -168,7 +168,9 @@ Jupyter notebooks are...
     location, you may need to change the first part of your `-v` argument.
 
 2. Navigate to [http://localhost:8888](http://localhost:8888) in your web 
-    browser. You should see a listing of the files from this repo.
+    browser. You should see a listing of the files and directories inside this
+    repo.
 
+3. Click on `Lecture 1 > Setting up Python.ipynb` and a notebook should open.
 
 
