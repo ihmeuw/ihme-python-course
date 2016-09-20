@@ -119,7 +119,7 @@ you can simply:
 Unix/Linux
 ~~~~~~~~~~
 
-¯\\\ *(ツ)*/¯
+¯\\\_(ツ)_/¯
 
 Install Anaconda
 ----------------
