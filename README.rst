@@ -27,8 +27,8 @@ Getting started
 ===============
 
 In order to make sure everyone is operating off of the same page, we're
-going to be using `Docker <https://www.docker.com/what-docker>`__ and
-`Anaconda <https://www.continuum.io/anaconda-overview>`__ to setup
+going to be using `Docker <https://www.docker.com/what-docker>`_ and
+`Anaconda <https://www.continuum.io/anaconda-overview>`_ to setup
 consistent Python development environments.
 
 Please follow the installation instructions for Docker and Anaconda
@@ -70,10 +70,10 @@ Windows 10
 ~~~~~~~~~~
 
 Detailed installation instructions are available
-`here <https://docs.docker.com/docker-for-windows/>`__. For our
+`here <https://docs.docker.com/docker-for-windows/>`_. For our
 purposes, you can simply:
 
-1. `Download <https://download.docker.com/win/stable/InstallDocker.msi>`__
+1. `Download <https://download.docker.com/win/stable/InstallDocker.msi>`_
    the installer.
 
 2. Double click on the installer and follow the prompts (keeping all
@@ -89,19 +89,19 @@ Windows 7 and Windows 8
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Detailed installation instructions are available
-`here <https://docs.docker.com/toolbox/toolbox_install_windows/>`__. For
+`here <https://docs.docker.com/toolbox/toolbox_install_windows/>`_. For
 our purposes, you can simply:
 
-1. ...
+1. You're killing me, Smalls.
 
 Mac OSX
 ~~~~~~~
 
 Detailed installation instructions are available
-`here <https://docs.docker.com/docker-for-mac/>`__. For our purposes,
+`here <https://docs.docker.com/docker-for-mac/>`_. For our purposes,
 you can simply:
 
-1. `Download <https://download.docker.com/mac/stable/Docker.dmg>`__ the
+1. `Download <https://download.docker.com/mac/stable/Docker.dmg>`_ the
    installer.
 
 2. Double click on the installer and drag ``Docker.app`` into your
@@ -128,8 +128,8 @@ Anaconda is a software package for Python (and R and sometimes C...)
 that handles the installation of common Python packages for you, making
 it easier to create and manage portable environments. We'll be using it
 inside of Docker to ensure that everyone is running under the same
-environment. See `this
-page <https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science>`__
+environment. See `this page <https://www.continuum.io/blog/developer-blog/
+anaconda-and-docker-better-together-reproducible-data-science>`_ 
 for more on how Docker and Anaconda fit together.
 
 1. Get the latest Anaconda for Python 3 image:
@@ -184,8 +184,8 @@ Jupyter notebooks are...
    non-standard location, you may need to change the first part of your
    ``-v`` argument.
 
-2. Navigate to http://localhost:8888 in your web browser. You should see
-   a listing of the files and directories inside this repo.
+2. Navigate to `localhost:8888 <http://localhost:8888>`_ in your web browser. 
+   You should see a listing of the files and directories inside this repo.
 
 3. Click on ``Lecture 1`` then ``Setting up Python.ipynb`` and a
    notebook should open.
