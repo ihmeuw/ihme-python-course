@@ -184,6 +184,11 @@ Jupyter notebooks are...
    non-standard location, you may need to change the first part of your
    ``-v`` argument.
 
+   There are many more options you can specify. See the corresponding `Docker
+   <https://docs.docker.com/engine/reference/commandline/run/>`_ and `Jupyter
+   <https://jupyter.readthedocs.io/en/latest/running.html#introducing-
+   the-notebook-server-s-command-line-options>`_ documentation.
+
 2. Navigate to `localhost:8888 <http://localhost:8888>`_ in your web browser. 
    You should see a listing of the files and directories inside this repo.
 
