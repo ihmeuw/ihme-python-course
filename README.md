@@ -40,10 +40,10 @@ Simply fire up `git` and clone it:
     Mac, or `/homes/${USER}/repos/` on Unix).
 
 3. Clone this repo:
- 
-  ```
-  git clone ssh://git@stash.ihme.washington.edu:7999/scic/ihme-python-course.git
-  ```
+
+    ```
+    git clone git@github.com:IHME/ihme-python-course.git
+    ```
 
 Install Docker
 --------------
@@ -155,6 +155,7 @@ Jupyter notebooks are...
     browser. You should see a listing of the files and directories inside this
     repo.
 
-3. Click on `Lecture 1 > Setting up Python.ipynb` and a notebook should open.
+3. Click on `Lecture 1` then `Setting up Python.ipynb` and a notebook should 
+    open.
 
 
