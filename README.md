@@ -35,9 +35,9 @@ Simply fire up `git` and clone it:
 
 1. Open up a shell (e.g. `cmd.exe` or `terminal.app`).
 
-2. Navigate to where you'd like to save this. We recommend `${HOME}/repos/` 
-    (e.g. `C:/Users/${USER}/repos/` on Windows, `/Users/${USER}/repos/` on 
-    Mac, or `/homes/${USER}/repos/` on Unix).
+2. Navigate to where you'd like to save this. We recommend `~/repos/` 
+    (e.g. `C:/Users/<user>/repos/` on Windows, `/Users/<user>/repos/` on 
+    Mac, or `/homes/<user>/repos/` on Unix).
 
 3. Clone this repo:
 
@@ -145,7 +145,7 @@ Jupyter notebooks are...
     | `notebook` | | This tells Jupyter to start a Notebook server |
     | `--ip` | `'*'` | Configures Jupyter to respond to any user that can connect to the container |
     | `--no-browser` | | Prevents Jupyter from trying to automatically launch a web browser, since the Docker container does not have one |
-    | `--notebook-dir` | `/home/ihme-python-course/` | Sets the root directory for the Jupyter server to the same one we mapped under `-v` |
+    | `--notebook-dir` | `/home/ihme-python-course/` | Sets the root directory for the Jupyter server to the same one mapped under `-v` |
     
     If you've followed all of the directions above exactly, you shouldn't need 
     to edit any of these right now. If you've saved into a non-standard
