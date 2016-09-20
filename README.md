@@ -56,7 +56,7 @@ We're going to just be using some very basic features of Docker, so if you'd
 like to learn more refer to 
 [this page](https://docs.docker.com/engine/understanding-docker/).
 
-### Windows
+### Windows 10
 Detailed installation instructions are available
 [here](https://docs.docker.com/docker-for-windows/). For our purposes, you can
 simply:
@@ -72,6 +72,12 @@ simply:
     ```
     docker run hello-world
     ```
+
+### Windows 7 and Windows 8
+Detailed installation instructions are available 
+[here](https://docs.docker.com/toolbox/toolbox_install_windows/). For our purposes, you can simply:
+
+1. ...
 
 ### Mac OSX
 Detailed installation instructions are available
