@@ -39,7 +39,7 @@ machine. Simply fire up ``git`` and clone it:
 
 2.  Navigate to where you'd like to save this. We recommend ``~/repos/``
     (e.g. ``C:/Users/<user>/repos/`` on Windows, ``/Users/<user>/repos/``
-    on Mac, or ``/homes/<user>/repos/`` on Unix).
+    on Mac, or ``/home/<user>/repos/`` on Unix).
 
 3.  Clone this repo:
 
