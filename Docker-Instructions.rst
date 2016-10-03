@@ -1,5 +1,5 @@
 Install Docker
---------------
+==============
 
 Docker enables you to create "containers" which provide consistent
 environments in which to run your code. This way, you can run the
@@ -12,7 +12,7 @@ you'd like to learn more refer to `this
 page <https://docs.docker.com/engine/understanding-docker/>`__.
 
 Windows 10
-~~~~~~~~~~
+----------
 
 Detailed installation instructions are available
 `here <https://docs.docker.com/docker-for-windows/>`_. For our
@@ -31,7 +31,7 @@ purposes, you can simply:
         docker run hello-world
 
 Windows 7 and Windows 8
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 Detailed installation instructions are available
 `here <https://docs.docker.com/toolbox/toolbox_install_windows/>`_. Be warned,
@@ -39,7 +39,7 @@ however, that some people at IHME with older Lenovo laptops have had trouble
 getting them to work.
 
 Mac OSX
-~~~~~~~
+-------
 
 Detailed installation instructions are available
 `here <https://docs.docker.com/docker-for-mac/>`_. For our purposes,
@@ -61,12 +61,12 @@ you can simply:
         docker run hello-world
 
 Unix/Linux
-~~~~~~~~~~
+----------
 
 ¯\\\_(ツ)_/¯
 
 Install Anaconda
-----------------
+================
 
 Anaconda is a software package for Python (and R and sometimes C...)
 that handles the installation of common Python packages for you, making
@@ -90,7 +90,7 @@ for more on how Docker and Anaconda fit together.
 
 
 Running Jupyter Notebooks via Docker
-====================================
+------------------------------------
 
 1.  You can fire up a notebook using the following command:
 
