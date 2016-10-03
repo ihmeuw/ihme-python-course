@@ -42,13 +42,13 @@ Installing Anaconda
 
 The easy way
 ~~~~~~~~~~~~
-Go to the [Anaconda download page](https://www.continuum.io/downloads) and 
+Go to the `Anaconda download page <https://www.continuum.io/downloads>`_ and 
 download the installer for Python 3.5 (64-bit) and simply click through to 
 follow the instructions
 
 The fancy way
 ~~~~~~~~~~~~~
-If you'd like to setup a [Docker container with Anaconda]
-(https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science), 
-check out the [Docker setup instructions](./Docker-Instructions.rst). 
+If you'd like to setup a 
+`Docker container with Anaconda <https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science>`_ 
+check out the `Docker setup instructions <./Docker-Instructions.rst>`_. 
 But be warned that it doesn't play terribly nicely with Windows 7 or 8...
