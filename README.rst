@@ -45,7 +45,7 @@ machine. Simply fire up ``git`` and clone it:
 
     ::
 
-        git clone git@github.com:IHME/ihme-python-course.git
+        git clone https://github.com/IHME/ihme-python-course.git
 
 Installing Anaconda
 -------------------
