@@ -63,3 +63,7 @@ See [the README](../README.rst) again for instructions on cloning this repo
 
 - [`RISE`](https://github.com/damianavila/RISE) will add a new button to your
     Jupyter toolbar that'll allow you to view these notebooks in slideshow mode
+- Click the new bargraph-esque icon in the toolbar to start a slideshow
+- Use `spacebar` and `shift+spacebar` to navigate through the slides
+- To edit how the slideshow is structured, take a look at 
+    `View > Cell Toolbar > Slideshow`
