@@ -1,13 +1,6 @@
 Intro
 =====
 
-Lorem ipsum
-
-Goals
------
-
-This course will teach you...
-
 Schedule
 --------
 
@@ -25,15 +18,6 @@ Schedule
 
 Getting started
 ===============
-
-In order to make sure everyone is operating off of the same page, we're
-going to be using `Docker <https://www.docker.com/what-docker>`_ and
-`Anaconda <https://www.continuum.io/anaconda-overview>`_ to setup
-consistent Python development environments.
-
-Please follow the installation instructions for Docker and Anaconda
-below to make sure you have a working Python environment prior to the
-beginning of the course.
 
 Clone this repo
 ---------------
@@ -53,3 +37,18 @@ machine. Simply fire up ``git`` and clone it:
 
         git clone git@github.com:IHME/ihme-python-course.git
 
+Installing Anaconda
+-------------------
+
+The easy way
+~~~~~~~~~~~~
+Go to the [Anaconda download page](https://www.continuum.io/downloads) and 
+download the installer for Python 3.5 (64-bit) and simply click through to 
+follow the instructions
+
+The fancy way
+~~~~~~~~~~~~~
+If you'd like to setup a [Docker container with Anaconda]
+(https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science), 
+check out the [Docker setup instructions](../Docker-Instructions.rst). 
+But be warned that it doesn't play terribly nicely with Windows 7 or 8...
