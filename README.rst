@@ -50,5 +50,5 @@ The fancy way
 ~~~~~~~~~~~~~
 If you'd like to setup a [Docker container with Anaconda]
 (https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science), 
-check out the [Docker setup instructions](../Docker-Instructions.rst). 
+check out the [Docker setup instructions](./Docker-Instructions.rst). 
 But be warned that it doesn't play terribly nicely with Windows 7 or 8...
