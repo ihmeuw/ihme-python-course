@@ -68,9 +68,9 @@ The lectures are all Jupyter notebooks built with the
 If you install RISE, you can view them as interactive slideshows (instead of
 just notebooks). See the RISE page for more info, or simply:
 
-    ::
-    
-        conda install -c damianavila82 rise
+::
+
+    conda install -c damianavila82 rise
 
 Acknowledgments
 ===============
