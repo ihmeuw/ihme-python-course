@@ -61,6 +61,16 @@ If you'd like to setup a
 check out the `Docker setup instructions <./Docker-Instructions.rst>`_. 
 But be warned that it doesn't play terribly nicely with Windows 7 or 8...
 
+Viewing slideshows
+==================
+The lectures are all Jupyter notebooks built with the 
+[RISE](https://github.com/damianavila/RISE) live notebook presentation plugin. 
+If you install RISE, you can view them as interactive slideshows (instead of
+just notebooks). See the RISE page for more info, or simply:
+
+::
+    conda install -c damianavila82 rise
+
 Acknowledgments
 ===============
 
