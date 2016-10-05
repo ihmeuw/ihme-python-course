@@ -69,7 +69,7 @@ all of which are licensed under Creative Commons:
 
 - `swcarpentry/python-novice-gapminder <https://github.com/swcarpentry/python-novice-gapminder>`_
 - `TomAugspurger/pydata-chi-h2t <https://github.com/TomAugspurger/pydata-chi-h2t>`_
-- `fonnesbeck/HealthPolicyPython/ <https://github.com/fonnesbeck/HealthPolicyPython/>`_
+- `fonnesbeck/HealthPolicyPython <https://github.com/fonnesbeck/HealthPolicyPython/>`_
 - `jrjohansson/scientific-python-lectures <https://github.com/jrjohansson/scientific-python-lectures>`_
 
 License
