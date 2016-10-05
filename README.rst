@@ -73,8 +73,8 @@ fork this repo or just make a local branch to work off of:
 4. Then apply the changes from master to your personal branch:
 
     ::
-    
-        git rebase origin/master
+
+        git merge origin/master
 
 
 
