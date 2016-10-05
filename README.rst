@@ -11,13 +11,11 @@ Schedule
 +--------------+--------------+---------------------+----------------------------------------------+
 | Day 1        | Lecture 2    | Basic Python        | *Syntax, data structures, control flow, etc* |
 +--------------+--------------+---------------------+----------------------------------------------+
-| Day 1        | Lecture 3    | Pandas I            | *Reading data, dataframe basics*             |
+| Day 2        | Lecture 3    | Numpy + Pandas I    | *Numpy basics, series + dataframe basics*    |
 +--------------+--------------+---------------------+----------------------------------------------+
 | Day 2        | Lecture 4    | Pandas II           | *Joining, advanced indexing, reshaping, etc* |
 +--------------+--------------+---------------------+----------------------------------------------+
 | Day 2        | Lecture 5    | Plotting            | *Intro to matplotlib, saving plots, etc*     |
-+--------------+--------------+---------------------+----------------------------------------------+
-| Day 2        | Lecture 6    | Numpy               | *np.array, basic functions, axes*            |
 +--------------+--------------+---------------------+----------------------------------------------+
 | Day 3        | Lecture 7    | Intermediate Python | *Writing and running program, debugging, etc*|
 +--------------+--------------+---------------------+----------------------------------------------+
