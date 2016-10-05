@@ -54,22 +54,26 @@ fork this repo or just make a local branch to work off of:
 1. Use `git checkout` to make a new branch
 
     ::
+
         git checkout -b my_branch_name
 
 2. Save any changes using `git add` and then `git commit`
 
     ::
+
         git add .
         git commit -m "describe your change"
 
 3. To get updates from the master branch, first fetch them:
 
     ::
+
         git fetch
 
 4. Then apply the changes from master to your personal branch:
 
     ::
+    
         git rebase origin/master
 
 
