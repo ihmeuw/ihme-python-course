@@ -60,3 +60,21 @@ If you'd like to setup a
 `Docker container with Anaconda <https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science>`_ 
 check out the `Docker setup instructions <./Docker-Instructions.rst>`_. 
 But be warned that it doesn't play terribly nicely with Windows 7 or 8...
+
+Acknowledgments
+===============
+
+Significant portions of this course were adapted from the following sources:
+
+- `github.com/swcarpentry/python-novice-gapminder <https://github.com/swcarpentry/python-novice-gapminder>`_
+- `github.com/TomAugspurger/pydata-chi-h2t <https://github.com/TomAugspurger/pydata-chi-h2t>`_
+- `github.com/fonnesbeck/HealthPolicyPython/ <https://github.com/fonnesbeck/HealthPolicyPython/>`_
+- `github.com/jrjohansson/scientific-python-lectures <https://github.com/jrjohansson/scientific-python-lectures>`_
+
+All of the above sources are kindly licensed under Creative Commons,
+as are all the materials for this course.
+
+License
+=======
+This work is licensed under a 
+`Creative Commons Attribution 3.0 United States License <http://creativecommons.org/licenses/by/3.0/us/>`_.
