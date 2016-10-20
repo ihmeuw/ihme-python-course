@@ -19,6 +19,9 @@ Schedule
 +--------------+--------------+----------------------+----------------------------------------------+
 | Day 3        | Lecture 6    | Plotting             | *Intro to plotting in Python*                |
 +--------------+--------------+----------------------+----------------------------------------------+
+| Day 3        | Lecture 7    | Regression Intro     | *Intro to regressions with Statsmodels*      |
++--------------+--------------+----------------------+----------------------------------------------+
+
 
 Getting started
 ===============
@@ -90,8 +93,8 @@ If you'd like to setup a
 check out the `Docker setup instructions <./Docker-Instructions.rst>`_. 
 But be warned that it doesn't play terribly nicely with Windows 7 or 8...
 
-Additional graphics packages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Additional modules
+~~~~~~~~~~~~~~~~~~
 
 - `seaborn <https://seaborn.github.io>`_
     
@@ -110,6 +113,13 @@ Additional graphics packages
     ::
 
         conda install -c bokeh bokeh
+
+- `statsmodels <http://statsmodels.sourceforge.net/>`_
+
+    ::
+
+        conda install -c conda-forge statsmodels
+
 
 Viewing slideshows
 ==================
