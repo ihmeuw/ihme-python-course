@@ -15,9 +15,9 @@ Schedule
 +--------------+--------------+----------------------+----------------------------------------------+
 | Day 2        | Lecture 4    | Pandas II            | *Joining, advanced indexing, reshaping, etc* |
 +--------------+--------------+----------------------+----------------------------------------------+
-| Day 3        | Lecture 5    | Pandas III + Plotting| *Grouping, intro to plotting, etc*           |
+| Day 3        | Lecture 5    | Pandas III           | *Grouping, apply, transform, etc*            |
 +--------------+--------------+----------------------+----------------------------------------------+
-| Day 3        | Lecture 6    | Scientific Libraries | *Intro to scipy, seaborn, etc*               |
+| Day 3        | Lecture 6    | Plotting             | *Intro to plotting in Python *               |
 +--------------+--------------+----------------------+----------------------------------------------+
 
 Getting started
@@ -89,6 +89,27 @@ If you'd like to setup a
 `Docker container with Anaconda <https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science>`_ 
 check out the `Docker setup instructions <./Docker-Instructions.rst>`_. 
 But be warned that it doesn't play terribly nicely with Windows 7 or 8...
+
+Additional graphics packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- `seaborn <https://seaborn.github.io>`_
+    
+    ::
+
+        conda install -c conda-forge seaborn
+
+- `ggplot <http://ggplot.yhathq.com/>`_
+
+    ::
+
+        conda install -c bokeh ggplot
+
+- `bokeh <http://bokeh.pydata.org/en/latest/>`_
+
+    ::
+
+        conda install -c bokeh bokeh
 
 Viewing slideshows
 ==================
