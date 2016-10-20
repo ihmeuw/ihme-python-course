@@ -90,6 +90,27 @@ If you'd like to setup a
 check out the `Docker setup instructions <./Docker-Instructions.rst>`_. 
 But be warned that it doesn't play terribly nicely with Windows 7 or 8...
 
+Additional graphics packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- `seaborn <https://seaborn.github.io>`_
+    
+    ::
+
+        conda install -c conda-forge seaborn
+
+- `ggplot <http://ggplot.yhathq.com/>`_
+
+    ::
+
+        conda install -c bokeh ggplot
+
+- `bokeh <http://bokeh.pydata.org/en/latest/>`_
+
+    ::
+
+        conda install -c bokeh bokeh
+
 Viewing slideshows
 ==================
 The lectures are all Jupyter notebooks built with the 
