@@ -15,9 +15,9 @@ Schedule
 +--------------+--------------+----------------------+----------------------------------------------+
 | Day 2        | Lecture 4    | Pandas II            | *Joining, advanced indexing, reshaping, etc* |
 +--------------+--------------+----------------------+----------------------------------------------+
-| Day 3        | Lecture 5    | Pandas III + Plotting| *Grouping, intro to plotting, etc*           |
+| Day 3        | Lecture 5    | Pandas III           | *Grouping, apply, transform, etc*            |
 +--------------+--------------+----------------------+----------------------------------------------+
-| Day 3        | Lecture 6    | Scientific Libraries | *Intro to scipy, seaborn, etc*               |
+| Day 3        | Lecture 6    | Plotting             | *Intro to plotting in Python *               |
 +--------------+--------------+----------------------+----------------------------------------------+
 
 Getting started
