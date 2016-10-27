@@ -42,7 +42,7 @@ machine. Simply fire up ``git`` and clone it:
 
     ::
 
-        git clone https://github.com/IHME/ihme-python-course.git
+        git clone https://github.com/ihmeuw/ihme-python-course.git
 
 Saving local changes
 --------------------
