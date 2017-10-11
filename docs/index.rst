@@ -10,6 +10,7 @@ Welcome to IHME Python Course's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   numpy
 
 
 Indices and tables

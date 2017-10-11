@@ -1,0 +1,63 @@
+import logging
+
+
+LOGGER = logging.getLogger("ihme_python_course.numpy.gbd_example")
+
+
+def years():
+    """
+    Retrieve list of years.
+
+    Returns:
+       A list of years for this data.
+    """
+    return {{ years }}
+
+
+def age_groups():
+    """
+    These are the IDs as defined by GBD.
+
+    Returns:
+       A list of age group IDs, in chronological order.
+    """
+    return {{ age_group }}
+
+
+def us_male_lx_one():
+    """
+    :math:`l_x` for males in the US in the year 2010.
+
+    Returns:
+        list[float] of :math:`l_x` at the start of each interval.
+    """
+    return {{ us_male_lx_2010 }}
+
+def us_male_qx_one():
+    """
+    :math:`{}_nq_x` for males in the US in the year 2010.
+
+    Returns:
+        list[float] of :math:`{}_nq_x` across each interval.
+    """
+    return {{ us_male_qx_2010 }}
+
+
+def us_male_lx():
+    """
+    :math:`l_x` for males in the US for all GBD years.
+
+    Returns:
+        list[list[float]] of :math:`q_x` across each interval.
+    """
+    return {{ us_male_lx }}
+
+
+def us_male_qx():
+    """
+    :math:`{}_nq_x` for males in the US for all GBD years.
+
+    Returns:
+        list[list[float]] of :math:`{}_nq_x` across each interval.
+    """
+    return {{ us_male_qx }}
