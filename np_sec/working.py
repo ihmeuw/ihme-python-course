@@ -14,6 +14,22 @@ def examine_input_data():
     pass
 
 
+def us_male_np():
+    """
+    Returns :math:`l_x` and :math:`{}_nq_x` as numpy arrays.
+
+    Returns:
+         Tuple containing lx, qx.
+    """
+    lx = gbd_example.us_male_lx_one()
+    qx = gbd_example.us_male_qx_one()
+
+    # Convert them to numpy arrays
+
+    # And return them both
+    return (lx_np, qx_np)
+
+
 if __name__ == "__main__":
     parser = ArgumentParser(description=__doc__,
                             formatter_class=RawTextHelpFormatter)
