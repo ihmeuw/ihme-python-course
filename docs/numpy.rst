@@ -5,6 +5,7 @@ Numpy
 
 Stage 1: Regular For Loop
 -------------------------
+Goals: Review functions and loops. Get a look at data.
 
 Background on GBD Output
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -47,9 +48,6 @@ provided for you.
 
 .. autofunction:: gbd_example.us_male_lx
 
-Python format function help at `Python site <https://docs.python.org/3/tutorial/inputoutput.html>`_
-and the `formatting site. <https://pyformat.info/>`_
-
 
 Logging
 ^^^^^^^
@@ -65,6 +63,10 @@ For example::
    if all_wrong:
        LOGGER.error("Gone wrong, and this is the situation: {}".format(3))
        exit()
+
+
+Python format function help at `Python site <https://docs.python.org/3/tutorial/inputoutput.html>`_
+and the `formatting site. <https://pyformat.info/>`_
 
 ================  ==================================================
 Call              When to use it
@@ -128,6 +130,7 @@ Use the template ``working.calculate_death(lx, qx)``.
 
 Stage 2: Convert to a Numpy Array
 ---------------------------------
+Goals: Understand how lists and numpy arrays behave differently.
 
 Creation of Numpy Arrays
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -224,6 +227,11 @@ Exercise: Algebraic Operations
        lx_np * 3
        lx_np * qx_np
 
+    *More* Using numpy arrays, calculation of deaths becomes a one-line
+    problem. How much faster is the numpy version of calculate death?
+    There is a template for ``working.calculate_death_np`` you could
+    fill out and time.
+
  4. How do numpy arrays behave differently from lists? This behavior
     is called a "pointwise" or "elementwise" operation. Statisticians
     call the multiplicative version the
@@ -233,16 +241,16 @@ Exercise: Algebraic Operations
  5. *More* Find the size in memory of a Python list for :math:`l_x`.
     Compare it with the size of the Numpy array for :math:`l_x`.
 
- 6. *Explore* Make a new list that's a hundred times longer for each.
+ 7. *Explore*     Make a new list that's a hundred times longer for each.
     (Hint, the line ``lx * 6`` copies ``lx`` 6 times.)
     Again, find the size with ``getsizeof``.
-
- 7. *Explore* How much more memory does each float require for a numpy
+    How much more memory does each float require for a numpy
     array? How does that compare with the number of bytes
     required to represent a float?
 
 Stage 3: Numpy Data Structure, Data Types
 -----------------------------------------
+Goals: Select elements from numpy arrays and understand type promotion.
 
 The Array Object
 ^^^^^^^^^^^^^^^^
@@ -396,6 +404,8 @@ for scientific work?
 
 Stage 4: Selection Within Arrays
 --------------------------------
+Goals: Select using arrays of indices or truth values.
+
 Comparison Operators
 ^^^^^^^^^^^^^^^^^^^^
 Just as +, -, ``*``, and / operate on arrays, so do logical operators
@@ -482,6 +492,7 @@ indices? Can you set :math:`l_x` to 0 at those points?
 
 Stage 5: Collective Operations
 ------------------------------
+Goals: Recognize collective operations and be able to find available tools.
 
 A collective operation is an operation on a set of things.
 This is not a collective operation::
@@ -537,6 +548,7 @@ be most useful for work here?
 
 Stage 6: From Numpy to Pandas
 -----------------------------
+Goals: Understand need for Pandas.
 
 Dictionaries
 ^^^^^^^^^^^^

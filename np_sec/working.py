@@ -78,6 +78,6 @@ if __name__ == "__main__":
     parser.add_argument("-q", action="count", default=0,
                         help="Add -q to quiet logging.")
     args, _ = parser.parse_known_args()
-    logging.basicConfig(level=logging.INFO - 10 * args.v + 10 * args.q)
+    logging.basicConfig(level=logging.INFO  -  10 * args.v  +  10 * args.q)
 
     examine_input_data()
