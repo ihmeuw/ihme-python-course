@@ -6,6 +6,9 @@ Numpy
 Exercise 1: Calculate Deaths
 ----------------------------
 
+Background on GBD Output
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 We will work with data directly from the GBD outputs for overall
 population and mortality for countries. These are life tables for
 populations, where each population is classified by
@@ -102,90 +105,13 @@ prints
    length of the :math:`l_x` array.
 
 Do you see a pattern in the columns? The second column is the
-number of deaths each year, called `{}_nd_x = {}_nq_x\:l_x`.
+number of deaths each year, called :math:`{}_nd_x = {}_nq_x\:l_x`.
 
+Conversion to a Numpy Array
+---------------------------
 
-Exercise 2: Timing, Sizes
--------------------------
-
-Dictionaries
-^^^^^^^^^^^^
-A `dictionary <https://docs.python.org/3/tutorial/datastructures.html#dictionaries>`_
-is a data structure that maps keys to values.
-The keys have to be immutable, and the values can be any object.
-
-There are several ways to create a dictionary::
-
-   empty_dict = dict()
-   pop_map = { 28: 100000, 5: 999966 }
-   coords = dict(year_id=[1990, 1991], sex_id=[1, 2, 3])
-   coords = {"year_id": [1990, 1991], "sex_id": [1, 2, 3]}
-
-The last two lines do the same thing.
-Once you make it, entries can be read or added with item accessors,::
-
-   print(coords["year_id"])
-   pop_map[6] = 999700
-
-If you squint, then calling a function looks like creating a dictionary.
-
-
-Timing with ``timeit``
-^^^^^^^^^^^^^^^^^^^^^^
-The built-in `timeit module <https://docs.python.org/3/library/timeit.html?highlight=timeit#module-timeit>`_
-can tell us how long it takes for a statement to run.
-Calling ``timeit.timeit`` can be a challenge. For instance, assume
-we have already defined a ``deaths`` function that multiplies
-:math:`l_x` and :math:`q_x`. Then we time it::
-
-    def deaths(lx, qx):
-        return lx[0] * qx[0]
-
-    def time_deaths():
-        lx = gbd_example.us_male_lx_one()
-        qx = gbd_example.us_male_qx_one()
-        deaths_time = timeit.timeit(
-            stmt="deaths(lx, qx)",
-            globals=dict(lx=lx, qx=qx, deaths=deaths))
-        print("Deaths takes {} s".format(deaths_time))
-
-The ``timeit`` function denies that the variables ``lx``, ``qx``,
-and ``deaths`` are defined unless you give it the ``globals`` argument,
-which is a dictionary where the keys are the variables and functions
-the timing statement (``stmt``) needs to run.
-Do you see the ``dict`` definition style used? Python knows, when it
-sees ``dict(lx=lx)`` that it is supposed to create a dictionary
-entry where the key is the string ``"lx"`` and the value is the
-list of numbers from the variable ``lx``.
-
-
-Find the Size of a Python Object
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There is a Python function that tells you how much memory
-an object uses. It's the function ``getsizeof`` in the ``sys`` module,
-so it's called with::
-
-   import sys
-
-   def make_something():
-       a = [100000, 99877, 89777]
-       a_size_in_bytes = sys.getsizeof(a)
-       print("a bytes {}".format(a_size_in_bytes))
-
-Sizes of data in memory or on disk have the units:
-
-=========   ==============    =============================================
-Unit        Abbreviation      Size
-=========   ==============    =============================================
-Byte        B                 Represents a number between 0 and 256
-Kilobyte    kB                1024 Bytes
-Megabyte    MB                1024 KB, approximately :math:`10^6` Bytes
-Gigabyte    GB                1024 MB, approximately :math:`10^9` Bytes
-Terabyte    TB                1024 GB, approximately :math:`10^{12}` Bytes
-=========   ==============    =============================================
-
-Conversion to Numpy Array
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Creation of Numpy Arrays
+^^^^^^^^^^^^^^^^^^^^^^^^
 To convert a list to a numpy array::
 
    import numpy as np
@@ -236,17 +162,6 @@ Question 1: Algebraic Operations
     because they like to think they invent things.
 
 
-Question 2: Memory Usage
-^^^^^^^^^^^^^^^^^^^^^^^^
-
- 1. Find the size in memory of a Python list for :math:`l_x`.
-    Compare it with the size of the Numpy array for :math:`l_x`.
-
- 2. *More* Make a new list that's a hundred times longer for each.
-    Again, find the size.
-
-
-
 Exercise 3: Numpy Data Structure, Data Types
 --------------------------------------------
 
@@ -274,6 +189,10 @@ accessor, much like lists::
     >>> a[1] = 81
     >>> print(a)
     [1 81 17 4]
+    >>> print(a[1:3])
+    [2 17]
+    >>> print(a[:3])
+    [1 2 17]
 
 
 Data Types
@@ -348,7 +267,151 @@ Question 1: Array Type
  4. Multiply the array created in the last problem by 3.14 and assign the result
     to a new value. What's the ``dtype`` of that array?
 
- 4. Convert the float array to integers. Then subtract the integers
+ 5. We know that we can add, subtract, multiply, and divide. What do
+    the less-than (<) and greater-than (>) operators do? Take the array
+    from above and try ``desc < 16``. What is the ``dtype`` of the result?
+    Now look at ``desc[desc<16]``.
+
+    *More* Try ``desc[np.sin(desc) < 0.8]``. Print each step taken to evaluate
+    this statement.
+
+ 6. Convert the float array to integers. Then subtract the integers
     from the floating array in order to find the fractional parts.
     What type is the result?
+
+
+Selection Within Arrays
+-----------------------
+bit vectors
+all and any
+
+
+
+Exercise 2: Timing, Sizes
+-------------------------
+
+Dictionaries
+^^^^^^^^^^^^
+A `dictionary <https://docs.python.org/3/tutorial/datastructures.html#dictionaries>`_
+is a data structure that maps keys to values.
+The keys have to be immutable, and the values can be any object.
+
+There are several ways to create a dictionary::
+
+   empty_dict = dict()
+   pop_map = { 28: 100000, 5: 999966 }
+   coords = dict(year_id=[1990, 1991], sex_id=[1, 2, 3])
+   coords = {"year_id": [1990, 1991], "sex_id": [1, 2, 3]}
+
+The last two lines do the same thing.
+Once you make it, entries can be read or added with item accessors,::
+
+   print(coords["year_id"])
+   pop_map[6] = 999700
+
+
+Timing with ``timeit``
+^^^^^^^^^^^^^^^^^^^^^^
+The built-in `timeit module <https://docs.python.org/3/library/timeit.html?highlight=timeit#module-timeit>`_
+can tell us how long it takes for a statement to run.
+Calling ``timeit.timeit`` can be a challenge. For instance, assume
+we have already defined a ``deaths`` function that multiplies
+:math:`l_x` and :math:`q_x`. Then we time it::
+
+    def deaths(lx, qx):
+        return lx[0] * qx[0]
+
+    def time_deaths():
+        lx = gbd_example.us_male_lx_one()
+        qx = gbd_example.us_male_qx_one()
+        deaths_time = timeit.timeit(
+            stmt="deaths(lx, qx)",
+            globals=dict(lx=lx, qx=qx, deaths=deaths))
+        print("Deaths takes {} s".format(deaths_time))
+
+The ``timeit`` function denies that the variables ``lx``, ``qx``,
+and ``deaths`` are defined unless you give it the ``globals`` argument,
+which is a dictionary where the keys are the variables and functions
+the timing statement (``stmt``) needs to run.
+Do you see the ``dict`` definition style used? Python knows, when it
+sees ``dict(lx=lx)`` that it is supposed to create a dictionary
+entry where the key is the string ``"lx"`` and the value is the
+list of numbers from the variable ``lx``.
+
+
+Find the Size of a Python Object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+There is a Python function that tells you how much memory
+an object uses. It's the function ``getsizeof`` in the ``sys`` module,
+so it's called with::
+
+   import sys
+
+   def make_something():
+       a = [100000, 99877, 89777]
+       a_size_in_bytes = sys.getsizeof(a)
+       print("a bytes {}".format(a_size_in_bytes))
+
+Sizes of data in memory or on disk have the units:
+
+=========   ==============    =============================================
+Unit        Abbreviation      Size
+=========   ==============    =============================================
+Byte        B                 Represents a number between 0 and 256
+Kilobyte    kB                1024 Bytes
+Megabyte    MB                1024 KB, approximately :math:`10^6` Bytes
+Gigabyte    GB                1024 MB, approximately :math:`10^9` Bytes
+Terabyte    TB                1024 GB, approximately :math:`10^{12}` Bytes
+=========   ==============    =============================================
+
+
+Question 2: Memory Usage
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+ 1. Find the size in memory of a Python list for :math:`l_x`.
+    Compare it with the size of the Numpy array for :math:`l_x`.
+
+ 2. *More* Make a new list that's a hundred times longer for each.
+    Again, find the size.
+
+
+
+Collective Operations
+---------------------
+
+A collective operation is an operation on a set of things.
+This is not a collective operation::
+
+   lx_np = np.array(gbd_example.us_male_lx_one())
+   for lx in range(1, len(lx_np)):
+        dx = lx[idx] - lx[idx-1]
+
+This is a collective operation::
+
+   dx = lx[:-1] - lx[1:]
+
+In the language of Python, a ``ufunc`` is a function that acts
+elementwise on an array. For instance, we can's use Python's ``sin``
+function to get the sine of values, but numpy defines a ``ufunc``
+version we can use::
+
+   import math
+   import numpy as np
+
+   arr = np.array([0.9, 0.7, 0.6], dtype=np.float)
+   try:
+       result = sin(arr)
+   except TypeError as te:
+       print("Cannot get the sin of an array using built-in sin")
+
+   # But the numpy version is a ufunc, so it applies across all.
+   print(np.sin(arr))
+
+
+Scipy Library
+^^^^^^^^^^^^^
+Numpy is the common language for almost all Python mathematics.
+Using it gives you access to
+`Scipy <https://docs.scipy.org/doc/scipy/reference/>`_, which has a wide range
+of computational functions. Many operations in Scipy are ufuncs.
 

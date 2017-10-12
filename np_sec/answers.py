@@ -51,6 +51,9 @@ def deaths(lx, qx):
     return deaths
 
 
+def deaths_np(lx, qx):
+    return lx * qx
+
 def time_deaths():
     lx = gbd_example.us_male_lx_one()
     qx = gbd_example.us_male_qx_one()
@@ -58,6 +61,15 @@ def time_deaths():
         stmt="deaths(lx, qx)",
         globals=dict(lx=lx, qx=qx, deaths=deaths))
     print("Deaths takes {} s".format(deaths_time))
+
+
+def time_deaths_np():
+    lx = np.array(gbd_example.us_male_lx_one())
+    qx = np.array(gbd_example.us_male_qx_one())
+    deaths_time = timeit.timeit(
+        stmt="deaths_np(lx, qx)",
+        globals=dict(lx=lx, qx=qx, deaths_np=deaths_np))
+    print("Deaths_np takes {} s".format(deaths_time))
 
 
 if __name__ == "__main__":
@@ -70,4 +82,5 @@ if __name__ == "__main__":
 
     #examine_input_data()
     compare_list_array()
-    #time_deaths()
+    time_deaths()
+    time_deaths_np()
