@@ -16,7 +16,7 @@ import xarray as xr
 import fbd_core.demog
 
 
-LOGGER = logging.getLogger("ihme_python_course.numpy.prepare_data")
+LOGGER = logging.getLogger("ihme_python_course.np_sec.prepare_data")
 GBDDATA = Path("/ihme/forecasting/data/4/past/"
                "life_expectancy/20171006_shock_hiv")
 
@@ -74,6 +74,7 @@ def choose_inputs(gbd_data):
     vals["us_male_qx_2010"] = list(qx.loc[us_men_2010].values)
     vals["us_male_qx"] = list(list(y) for y in qx.loc[us_men].T.values)
 
+    LOGGER.info("Writing file gbd_example.py")
     with open("gbd_example.py", "w") as gbd_out:
         gbd_out.write(template.render(**vals))
         gbd_out.write(os.linesep)
