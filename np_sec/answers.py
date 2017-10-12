@@ -51,6 +51,12 @@ def deaths(lx, qx):
     return deaths
 
 
+def test_calculate_death():
+    dx = deaths(gbd_example.us_male_lx_one(),
+                         gbd_example.us_male_qx_one())
+    assert np.allclose(dx, gbd_example.us_male_dx_one())
+
+
 def deaths_np(lx, qx):
     return lx * qx
 
@@ -59,7 +65,7 @@ def time_deaths():
     qx = gbd_example.us_male_qx_one()
     deaths_time = timeit.timeit(
         stmt="deaths(lx, qx)",
-        globals=dict(lx=lx, qx=qx, deaths=deaths))
+        globals={**globals(), **locals()})
     print("Deaths takes {} s".format(deaths_time))
 
 
@@ -68,7 +74,7 @@ def time_deaths_np():
     qx = np.array(gbd_example.us_male_qx_one())
     deaths_time = timeit.timeit(
         stmt="deaths_np(lx, qx)",
-        globals=dict(lx=lx, qx=qx, deaths_np=deaths_np))
+        globals={**globals(), **locals()})
     print("Deaths_np takes {} s".format(deaths_time))
 
 

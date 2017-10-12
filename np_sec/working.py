@@ -11,7 +11,48 @@ LOGGER = logging.getLogger("working")
 
 
 def examine_input_data():
-    pass
+    # Get lx and qx from our input module, gbd_example.
+
+    # Create a list into which to put the results
+
+    # Loop over the arrays, and store into the result list
+
+    # print the result list
+    LOGGER.debug("examine_input_data begin")
+
+
+def calculate_death(lx, qx):
+    """
+    Given population and mortality, return the deaths for each interval.
+
+    Arguments:
+          lx (list[float]): :math:`l_x`, population at start of each interval
+          qx (list[float]): :math:`{}_nq_x`, mortality over each interval
+
+    Returns:
+          list[float]: :math:`d_x = l_x\:{}_nq_x` deaths
+    """
+    return dx
+
+
+def test_calculate_death():
+    dx = calculate_death(gbd_example.us_male_lx_one(),
+                         gbd_example.us_male_qx_one())
+    assert np.allclose(dx, gbd_example.us_male_dx_one())
+
+
+def calculate_death_np(lx, qx):
+    """
+    Given population and mortality, return the deaths for each interval.
+
+    Arguments:
+          lx (np.array): :math:`l_x`, population at start of each interval
+          qx (np.array): :math:`{}_nq_x`, mortality over each interval
+
+    Returns:
+          list[float]: :math:`d_x = l_x\:{}_nq_x` deaths
+    """
+    return dx
 
 
 def us_male_np():
@@ -21,8 +62,7 @@ def us_male_np():
     Returns:
          Tuple containing lx, qx.
     """
-    lx = gbd_example.us_male_lx_one()
-    qx = gbd_example.us_male_qx_one()
+    # Get lx and qx from our input module, gbd_example.
 
     # Convert them to numpy arrays
 

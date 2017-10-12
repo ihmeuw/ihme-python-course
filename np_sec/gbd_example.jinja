@@ -1,5 +1,7 @@
 import logging
 
+import numpy as np
+
 
 LOGGER = logging.getLogger("ihme_python_course.numpy.gbd_example")
 
@@ -41,6 +43,12 @@ def us_male_qx_one():
         list[float] of :math:`{}_nq_x` across each interval.
     """
     return {{ us_male_qx_2010 }}
+
+
+def us_male_dx_one():
+    lx = np.array(us_male_lx_one(), dtype=np.float)
+    qx = np.array(us_male_qx_one(), dtype=np.float)
+    return list(lx * qx)
 
 
 def us_male_lx():

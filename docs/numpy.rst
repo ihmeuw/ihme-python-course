@@ -3,7 +3,7 @@ Numpy
 =====
 
 
-Stage 1: Calculate Deaths
+Stage 1: Regular For Loop
 -------------------------
 
 Background on GBD Output
@@ -13,12 +13,7 @@ We will work with data directly from the GBD outputs for overall
 population and mortality for countries. These are life tables for
 populations, where each population is classified by
 
- * ``location_id``, which indicates country or district within a country.
-   China is 6. The United States is 102.
-
  * ``year_id`` the year for which we have this data.
-
- * ``sex_id``, which is 1 for male, 2 for female, 3 for both sexes.
 
  * ``age_group_id``, which is an identifier for each age interval. These
    tend to be smaller for the young, so 28 is the first year,
@@ -32,18 +27,11 @@ are
 
 .. math::
 
-   l_x = \mbox{population at start of age interval}
+   l_x & = \mbox{population at start of age interval}
 
-   {}_nq_x = \mbox{fraction that die within age interval}
+   {}_nq_x & = \mbox{fraction that die within age interval}
 
-If we think of each individual as dying at a random time :math:`X`,
-then :math:`{}_nq_x` is the probability that they die by the end
-of the interval given that they lived to the start of the interval,
-
-.. math::
-
-   {}_nq_x = P[X\le x+n|X>x]
-
+We often refer to :math:`{}_nq_x` as just :math:`q_x`.
 Let's take a look at that data. We'll need some functions that are
 provided for you.
 
@@ -61,6 +49,7 @@ provided for you.
 
 Python format function help at `Python site <https://docs.python.org/3/tutorial/inputoutput.html>`_
 and the `formatting site. <https://pyformat.info/>`_
+
 
 Logging
 ^^^^^^^
@@ -90,12 +79,37 @@ LOGGER.exception  Something's wrong and the exception says more.
 The ``basicConfig`` call sets which level will print when the job runs.
 
 
+Timing with ``timeit``
+^^^^^^^^^^^^^^^^^^^^^^
+The built-in `timeit module <https://docs.python.org/3/library/timeit.html?highlight=timeit#module-timeit>`_
+can tell us how long it takes for a statement to run.
+Calling ``timeit.timeit`` can be a challenge. For instance, assume
+we have already defined a ``deaths`` function that multiplies
+:math:`l_x` and :math:`q_x`. Then we time it::
+
+    def deaths(lx, qx):
+        return lx[0] * qx[0]
+
+    def time_deaths():
+        lx = gbd_example.us_male_lx_one()
+        qx = gbd_example.us_male_qx_one()
+        deaths_time = timeit.timeit(
+            stmt="deaths(lx, qx)",
+            globals={**globals(), **locals()})
+        print("Deaths takes {} s".format(deaths_time))
+
+The ``timeit.timeit()`` function starts a separate Python
+sub-environment in which to run the string you give it.
+The ``globals`` argument, as shown, is a way to ensure that
+it can find the ``deaths()`` function and the local
+variables, ``lx`` and ``qx``.
+
 
 Exercise: Examine Input Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ensure ``working.py`` imports the ``gbd_example`` module.
 Edit the ``examine_input_data`` function in the ``working.py``
-script so that the module imports ``gbd_example`` and
-prints
+script to print
 
  * the number of age groups the GBD uses
  * the years covered
@@ -108,9 +122,12 @@ prints
 Do you see a pattern in the columns? The second column is the
 number of deaths each year, called :math:`{}_nd_x = {}_nq_x\:l_x`.
 
+*Explore* Put the for-loop into its own function and time that function.
+Use the template ``working.calculate_death(lx, qx)``.
 
-Stage 2: Conversion to a Numpy Array
-------------------------------------
+
+Stage 2: Convert to a Numpy Array
+---------------------------------
 
 Creation of Numpy Arrays
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -118,13 +135,13 @@ To convert a list to a numpy array::
 
    import numpy as np
    a = [1.4, 2.7, 3.2]
-   a_np = np.array(a)
+   a_np = np.array(a, dtype=np.float)
 
 To create a numpy array full of zeros or ones::
 
    import numpy as np
-   a = np.zeros((24,))  # Creates 24 zeros
-   b = np.ones((42,))   # Creates 42 ones
+   a = np.zeros((24,), dtype=np.int)  # Creates 24 integer zeros
+   b = np.ones((42,), dtype=np.float)   # Creates 42 float ones
 
 It often is much more efficient to preallocate arrays. With a Python
 list, it's normal to ``append`` to the list. That's rarely used
@@ -136,17 +153,18 @@ We can manipulate whole arrays at once in Numpy without
 for loops. They work elementwise::
 
    import numpy as np
-   a = np.array([1.4, 2.7, 3.1])
-   b = np.array([2.3, 4.7, 6.9])
+   a = np.array([1.4, 2.7, 3.1], dtype=np.float)
+   b = np.array([2.3, 4.7, 6.9], dtype=np.float)
    c = a + b
    d = a * b
    e = a / b
 
+We'll experiment with this in the exercise.
 
 Find the Size of a Python Object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 There is a Python function that tells you how much memory
-an object uses. It's the function ``getsizeof`` in the ``sys`` module,
+an object uses. It's the function ``sys.getsizeof()``,
 so it's called with::
 
    import sys
@@ -154,7 +172,7 @@ so it's called with::
    def make_something():
        a = [100000, 99877, 89777]
        a_size_in_bytes = sys.getsizeof(a)
-       print("a bytes {}".format(a_size_in_bytes))
+       LOGGER.info("a kB {}".format(a_size_in_bytes / 1024))
 
 Sizes of data in memory or on disk have the units:
 
@@ -169,13 +187,26 @@ Gigabyte    GB                1024 MB, approximately :math:`10^9` Bytes
 Terabyte    TB                1024 GB, approximately :math:`10^{12}` Bytes
 =========   ==============    =============================================
 
+Inline Pytest Tests
+^^^^^^^^^^^^^^^^^^^
+
+In ``working.py`` is an example of an inline pytest. Any function
+that starts with ``test_`` will be called by pytest. Pytest also
+has an option to run only those tests that match a substring::
+
+   $ pytest -k calculate_death working.py
+
+That will search the ``working.py`` file for tests and
+pick out the test called ``test_calculate_death`` to run.
+
 
 
 Exercise: Algebraic Operations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
- 1. Make a new function. Assign ``us_male_lx_one()`` to ``lx``
-    and ``us_male_qx_one()`` to ``qx``.
+ 1. Assign ``us_male_lx_one()`` to ``lx``
+    and ``us_male_qx_one()`` to ``qx``. Work either within a function
+    or on the command line.
 
  2. Find the value of the following::
 
@@ -184,9 +215,9 @@ Exercise: Algebraic Operations
 
     What does each of those operations do?
 
- 3. Make a new function, called ``us_male_np`` from the given template
-    such that it returns two Numpy arrays, one for lx and one for qx.
-    Then use that function for the following::
+ 3. Use the template function, called ``working.us_male_np()``
+    to return two Numpy arrays, one for lx and one for qx.
+    Then use that function to look at the following::
 
        lx_np, qx_np = us_male_np()
        lx_np + lx_np
@@ -203,7 +234,8 @@ Exercise: Algebraic Operations
     Compare it with the size of the Numpy array for :math:`l_x`.
 
  6. *Explore* Make a new list that's a hundred times longer for each.
-    Again, find the size.
+    (Hint, the line ``lx * 6`` copies ``lx`` 6 times.)
+    Again, find the size with ``getsizeof``.
 
  7. *Explore* How much more memory does each float require for a numpy
     array? How does that compare with the number of bytes
@@ -229,7 +261,9 @@ are the shape and dtype::
 
 The ``data`` member is where numpy stores the numbers 1, 2, 3, 4
 in a highly-efficient format. We can't access them except through the
-item accessor ([]), much like lists::
+item accessor ([]), as described in
+`array indexing <https://docs.scipy.org/doc/numpy-1.13.0/user/basics.indexing.html>`_,
+which follows the same basic moves as lists::
 
     >>> a=np.array([1,2,17,4])
     >>> print(a[2])
@@ -245,6 +279,31 @@ item accessor ([]), much like lists::
     4
     >>> print(a[:])
     [1 2 17 4]
+
+In addition, a numpy array can index two other ways. One is
+to index with an array of indices::
+
+    >>> a=np.array([1,2,17,4])
+    >>> a[ [0, 3] ]
+    [1 4]
+
+The other is to index with a sequence of True and False::
+
+    >>> a=np.array([1,2,17,4])
+    >>> a[ [False, True, True, True] ]
+    [2 17 4]
+
+The sequence of True and False has to be the same length as
+the array.
+
+Lastly, numpy can index multiple dimensions using a comma,
+so::
+
+   >>> a = np.array([[0, 1], [7, 9]])
+   >>> a[0, :]
+   [0 1]
+   >>> a[:, 0]
+   [0 7]
 
 Data Types
 ^^^^^^^^^^
@@ -301,31 +360,38 @@ Numpy arrays convert all at once::
 Converting from a float to an integer truncates the fractional part.
 
 
-Question 1: Array Type
-^^^^^^^^^^^^^^^^^^^^^^
+Exercise: Array Type
+^^^^^^^^^^^^^^^^^^^^
 
- 1. Use ``us_male_np`` to retrieve :math:`l_x` and :math:`{}_nq_x`
-    as numpy arrays.
+*Core* Use ``us_male_np`` to retrieve :math:`l_x` and :math:`{}_nq_x`
+as numpy arrays. How does the ``dtype`` of these arrays change
+as we do the following?
 
+ * Convert it to integers with ``astype``
+ * Subtract the integer version from the floating point version
 
- 2. What is the ``type`` of that array? What is its ``dtype``?
-    What is the ``type`` of the
-    second value in the array? Does adding 3 to it change the type?
+If we pick out one value from the integer :math:`l_x`, does it
+work in Python the same way a normal integer would? For instance,
+what if I pass the fourth entry to ``list(range( lx_int[3] ))``?
+Do I get a list of integers from 0 to lx_int[3]?
 
- 3. Convert the :math:`l_x` array to have integer values, and call it
-    ``lx_int``.
+*More* Let's try a 2D array. Convert ``us_male_lx()`` to a numpy
+array and look at the shape. Can you retrieve all results for
+one year? How about all results for one age group?
+Convert this to an integer and look at the dtype.
 
- 3. Try using the second value in the ``lx_int`` array in a range statement.
-    Does that work?::
+The 2D array covers all years and age groups for US males.
+Look at ``gbd_example.years()`` to find the ages for
+2010. How do you find the index of 2010 within the numpy array?
+You might need to look at numpy documentation.
 
-       print(list(range( lx_int[1] )))
+*Explore* Data types matter. Compare the following::
 
- 4. Multiply the ``lx_int`` array by 3.14 and assign the result
-    to a new value. What's the ``dtype`` of that array?
+   np.float(1.0) / np.float(0.0)
+   np.double(1.0) / np.double(0.0)
 
- 5. Subtract the integer array from the real array, ``lx - lx_int``
-    in order to find the fractional parts.
-    What type is the result?
+How do they differ? Why do they differ? Which would you prefer
+for scientific work?
 
 
 Stage 4: Selection Within Arrays
@@ -369,18 +435,50 @@ Instead, we use two operators, All and Any::
    True
    >>> any(a > 20)
    False
+   >>> if a > 15000:
+         print(3)
+       else:
+         print(4)
+
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   ValueError: The truth value of an array with more than one element
+   is ambiguous. Use a.any() or a.all()
+
+You may see that error message at some point, and ``any()`` or ``all()``
+are the solution.
+
+
+Index Where
+^^^^^^^^^^^
+We often want to know for which elements of the array something
+is true. This is called an ``argwhere`` function, but in numpy
+it's just ``np.where()``::
+
+   >>> a = np.array([3, 5, 7, 9])
+   >>> np.where(a > 5)
+   (array([2, 3]),)
+   >>> lows = np.where(a < 7)[0]
+   >>> lows
+   array([0, 1])
+
+Note that ``np.where`` returns a tuple, and the places where
+the condition is True are the first element of the tuple.
 
 Exercises
 ^^^^^^^^^
- 1. Load the numpy array versions of :math:`l_x` and :math:`{}_nq_x`.
 
- 2. We know that we can add, subtract, multiply, and divide. What do
-    the less-than (<) and greater-than (>) operators do? Take the array
-    from above and try ``lx < 0.5``. What is the ``dtype`` of the result?
-    Now look at ``lx[lx<0.5]``.
+Using the numpy versions of  :math:`l_x` and :math:`{}_nq_x`,
+let's try subselecting them. What is lx when :math:`l_x < 90,000`?
+For which indices is :math:`l_x < 90,000`?
 
- 3. *More* Try ``lx[np.sin(lx) < 0.8]``. Print each step taken to evaluate
-    this statement.
+Is there any age group for which the deaths (``lx * qx``)
+are greater than 15,000? 20,000?
+
+*More* If you know for which indices :math:`l_x < 10,000`,
+then can you find which age group IDs correspond to those
+indices? Can you set :math:`l_x` to 0 at those points?
+
 
 Stage 5: Collective Operations
 ------------------------------
@@ -390,9 +488,10 @@ This is not a collective operation::
 
    lx_np = np.array(gbd_example.us_male_lx_one())
    for lx in range(1, len(lx_np)):
-        dx = lx[idx] - lx[idx-1]
+        dx = lx[idx-1] - lx[idx]
 
-This is a collective operation::
+This is a collective operation, another way to compute deaths
+from the given data::
 
    dx = lx[:-1] - lx[1:]
 
@@ -413,17 +512,31 @@ version we can use::
    # But the numpy version is a ufunc, so it applies across all.
    print(np.sin(arr))
 
+We default to using the
+`numpy versions <https://docs.scipy.org/doc/numpy-1.13.0/reference/ufuncs.html#math-operations>`_
+of functions when possible.
 
 Scipy Library
 ^^^^^^^^^^^^^
 Numpy is the common language for almost all Python mathematics.
+The `Scipy Tutorial <https://docs.scipy.org/doc/scipy/reference/tutorial/index.html>`_
+is a good place to start.
 Using it gives you access to
 `Scipy <https://docs.scipy.org/doc/scipy/reference/>`_, which has a wide range
 of computational functions. Many operations in Scipy are ufuncs.
 
+Exercise: Using Scientific Functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Stage 6: Timing
----------------
+We often work in logit space. Find the logit function and convert
+:math:`{}_nq_x` to logit space. Use expit to convert it back.
+Use ``np.allclose`` to see if the converted one matches the original.
+
+Use this time to look through scipy. Which functions look like they will
+be most useful for work here?
+
+Stage 6: From Numpy to Pandas
+-----------------------------
 
 Dictionaries
 ^^^^^^^^^^^^
@@ -444,38 +557,19 @@ Once you make it, entries can be read or added with item accessors,::
    print(coords["year_id"])
    pop_map[6] = 999700
 
+Exercise: Access by Age Group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The goal is to access ``lx`` using age group ID instead
+of the 0-based index into ``lx``. It will look like this::
 
-Timing with ``timeit``
-^^^^^^^^^^^^^^^^^^^^^^
-The built-in `timeit module <https://docs.python.org/3/library/timeit.html?highlight=timeit#module-timeit>`_
-can tell us how long it takes for a statement to run.
-Calling ``timeit.timeit`` can be a challenge. For instance, assume
-we have already defined a ``deaths`` function that multiplies
-:math:`l_x` and :math:`q_x`. Then we time it::
+   >>> print(lx[ by_age[ 28 ] ])
+   100000.0
 
-    def deaths(lx, qx):
-        return lx[0] * qx[0]
+The ``by_age`` variable refers to a dictionary whose keys
+are age_group_ids and whose values are 0-based indices.
+Retrieve age group IDs using ``gbd_example.age_groups()``
+and create that dictionary.
 
-    def time_deaths():
-        lx = gbd_example.us_male_lx_one()
-        qx = gbd_example.us_male_qx_one()
-        deaths_time = timeit.timeit(
-            stmt="deaths(lx, qx)",
-            globals=dict(lx=lx, qx=qx, deaths=deaths))
-        print("Deaths takes {} s".format(deaths_time))
-
-The ``timeit`` function denies that the variables ``lx``, ``qx``,
-and ``deaths`` are defined unless you give it the ``globals`` argument,
-which is a dictionary where the keys are the variables and functions
-the timing statement (``stmt``) needs to run.
-Do you see the ``dict`` definition style used? Python knows, when it
-sees ``dict(lx=lx)`` that it is supposed to create a dictionary
-entry where the key is the string ``"lx"`` and the value is the
-list of numbers from the variable ``lx``.
-
-Exercise
-^^^^^^^^
-
-Compare the deaths function in the ``timeit`` explanation with
-the deaths function that uses a for-loop. Time each.
-
+Would you rather write code using the 0-based index or using
+the dictionary-based index? What are the pros and cons of
+each for correctness and speed?
