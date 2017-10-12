@@ -146,6 +146,8 @@ To create a numpy array full of zeros or ones::
    a = np.zeros((24,), dtype=np.int)  # Creates 24 integer zeros
    b = np.ones((42,), dtype=np.float)   # Creates 42 float ones
 
+What is ``(24,)``? It's a tuple with one element. If you set
+``x=(24,)``, then ``x[0]==24``.
 It often is much more efficient to preallocate arrays. With a Python
 list, it's normal to ``append`` to the list. That's rarely used
 for Numpy arrays.
